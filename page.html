@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.8.0.min.js"></script>
+	
+</head>
+
+<div class="wrapper">
+<div class="overflov_rotate"><div class="rotate_block"><div class="spinner pie"></div></div></div>
+  <div class="filler pie"></div>
+</div>
+
+
+
+
+
+<style>
+.wrapper, .wrapper>* {
+    box-sizing: border-box;
+}
+
+/*.wrapper {
+  width: 250px;
+  height: 250px;
+}*/
+.pie, .filler {
+    background: #08C;
+    border-radius:0 125px 125px 0;
+    border: 10px solid rgba(0,0,0,0.4);
+}
+/*.pie    {border-radius:125px 0 0 125px;}
+.filler {border-radius:0 125px 125px 0;}*/
+
+
+.wrapper {
+  position: relative;
+  background: white;
+  z-index: 1;
+}
+.rotate_block {
+	position: absolute;
+	width: 200%;
+	height: 100%;
+	left: -100%;
+}
+.overflov_rotate {
+	position: absolute;
+	width: 50%;
+	right: 0;
+	height: 100%;
+	overflow: hidden;
+}
+.pie {
+    top: 0;
+    left: 0;
+    right: 50%;
+    bottom: 0;
+    position: absolute;
+}
+.spinner {
+  z-index: 200;
+  border-right: none;
+}
+
+.mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  opacity: 1;
+  background: inherit;
+}
+
+.filler {
+    border-left: 0;
+    left: 50%;
+    right: 0;
+	opacity: 0;
+}
+
+
+.rotate_block {
+  transform: rotate(0deg);
+}
+.filler {
+	/*opacity: 1;*/
+}
+.overflov_rotate {
+    /*overflow: visible;*/
+}
+
+
+</style>
+
+
+<script>
+var ProcentGraphCircle = 90;
+var ProcentGraphCircle = 360*ProcentGraphCircle/100;
+
+var SIzeGraphCircle = 200;
+var SIzeGraphCircle2 = SIzeGraphCircle/2;
+$('.wrapper').css({
+	'width': SIzeGraphCircle,
+	'height': SIzeGraphCircle
+});
+$('.pie').css('border-radius', SIzeGraphCircle2+'px '+'0 0 '+SIzeGraphCircle2+'px');
+$('.filler').css('border-radius', '0 '+SIzeGraphCircle2+'px '+SIzeGraphCircle2+'px 0');
+
+$('.rotate_block').css('transform', 'rotate(-'+ProcentGraphCircle+'deg)');
+if (ProcentGraphCircle > 180) {
+	$('.overflov_rotate').css('overflow', 'visible');
+	$('.filler').css('opacity', 1);
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>

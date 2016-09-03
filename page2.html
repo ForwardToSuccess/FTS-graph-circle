@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="jquery-1.8.0.min.js"></script>
+
+</head>
+
+<div class="fts_graphic">
+<div class="fts-wrapper">
+<div class="fts-overflov_rotate"><div class="fts-rotate_block"><div class="fts-spinner fts-pie"></div></div></div>
+  <div class="fts-filler fts-pie"></div>
+</div>
+<div class="fts-wrapper">
+<div class="fts-overflov_rotate"><div class="fts-rotate_block"><div class="fts-spinner fts-pie"></div></div></div>
+  <div class="fts-filler fts-pie"></div>
+</div>
+
+</div>
+
+
+
+<style>
+.fts_graphic {
+    position: relative;
+}
+.fts-wrapper, .fts-wrapper>* {
+    box-sizing: border-box;
+}
+
+/*.fts-wrapper {
+  width: 250px;
+  height: 250px;
+}*/
+.fts-pie, .fts-filler {
+    background: #08C;
+    border-radius:0 125px 125px 0;
+    border: 10px solid rgba(0,0,0,0.4);
+}
+.fts-wrapper:nth-child(2) .fts-pie, .fts-wrapper:nth-child(2) .fts-filler {
+    background: #adcc00;
+    border-radius:0 125px 125px 0;
+    border: 10px solid rgba(0,0,0,0.4);
+}
+/*.fts-pie    {border-radius:125px 0 0 125px;}
+.fts-filler {border-radius:0 125px 125px 0;}*/
+
+
+.fts-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.fts-rotate_block {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  left: -100%;
+}
+.fts-overflov_rotate {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.fts-pie {
+    top: 0;
+    left: 0;
+    right: 50%;
+    bottom: 0;
+    position: absolute;
+}
+.fts-spinner {
+  z-index: 200;
+  border-right: none;
+}
+
+.mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  opacity: 1;
+  background: inherit;
+}
+
+.fts-filler {
+    border-left: 0;
+    left: 50%;
+    right: 0;
+  opacity: 0;
+}
+
+.fts-wrapper:nth-child(2) .fts-overflov_rotate {
+    right: inherit;
+    left: 0;
+}
+.fts-wrapper:nth-child(2) .fts-rotate_block {
+    left: inherit;
+    right: -100%;
+}
+.fts-wrapper:nth-child(2) .fts-pie {
+    right: 0;
+    left: 50%;
+    border: 10px solid rgba(0,0,0,0.4);
+    border-left: 0;
+}
+.fts-wrapper:nth-child(2) .fts-filler {
+    right: 50%;
+    left: 0;
+    border: 10px solid rgba(0,0,0,0.4);
+    border-right: 0;
+}
+/*.fts-rotate_block {
+  transform: rotate(0deg);
+}*/
+.fts-filler {
+  /*opacity: 1;*/
+}
+.fts-overflov_rotate {
+    /*overflow: visible;*/
+}
+
+
+</style>
+
+
+<script>
+var ProcentGraphCircle = 90;
+var ProcentGraphCircle = 360*ProcentGraphCircle/100;
+var ProcentGraphCircle2 = 360 - ProcentGraphCircle;
+
+var SIzeGraphCircle = 200;
+var SIzeGraphCircle2 = SIzeGraphCircle/2;
+$('.fts_graphic').css({
+  'width': SIzeGraphCircle,
+  'height': SIzeGraphCircle
+});
+$('.fts-pie:eq(0)').css('border-radius', SIzeGraphCircle2+'px '+'0 0 '+SIzeGraphCircle2+'px');
+$('.fts-filler:eq(0)').css('border-radius', '0 '+SIzeGraphCircle2+'px '+SIzeGraphCircle2+'px 0');
+
+$('.fts-rotate_block:eq(0)').css('transform', 'rotate(-'+ProcentGraphCircle+'deg)');
+if (ProcentGraphCircle > 180) {
+  $('.fts-overflov_rotate:eq(0)').css('overflow', 'visible');
+  $('.fts-filler:eq(0)').css('opacity', 1);
+}
+
+$('.fts-pie:eq(1)').css('border-radius', '0 '+SIzeGraphCircle2+'px '+SIzeGraphCircle2+'px 0');
+$('.fts-filler:eq(1)').css('border-radius', SIzeGraphCircle2+'px '+'0 0 '+SIzeGraphCircle2+'px');
+
+$('.fts-rotate_block:eq(1)').css('transform', 'rotate('+ProcentGraphCircle2+'deg)');
+if (ProcentGraphCircle2 > 180) {
+  $('.fts-overflov_rotate:eq(1)').css('overflow', 'visible');
+  $('.fts-filler:eq(1)').css('opacity', 1);
+}
+
+
+</script>
+
+
+
+</body>
+</html>
+
